@@ -7,7 +7,7 @@ const axiosWithAuth = () => {
         headers: {
             Authorization: token
         },
-        baseURL: ''
+        baseURL: 'http://spencer-how-to.herokuapp.com'
     });
 };
 

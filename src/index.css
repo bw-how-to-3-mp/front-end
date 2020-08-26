@@ -11,3 +11,117 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  font-family: "Montserrat", sans-serif;
+}
+body, #root, .App {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white; 
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+img {
+  width: 120px;
+  height: 100px;
+  }
+header.App-header {
+  width: 100%;
+  }
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-width: 100px;
+  min-height: 400px;
+  padding: 20px 40px 40px 40px;
+  border-radius: 6px;
+  box-shadow: 0px 8px 36px #222;
+  background-color: #008E97;
+  margin: auto;
+  transform: translate(0px, -70px);
+}
+form > h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+  font-weight: lighter;
+  margin-top: 0.25em;
+  color: white;
+  letter-spacing: 2px;
+}
+.info {
+  padding-bottom: 1em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+label {
+  margin-bottom: 0.5em;
+  color: whitesmoke;
+  font-weight: lighter;
+}
+input {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  width: 100%;
+}
+input, select {
+  padding: 10px 10px;
+  border-radius: 5px;
+  border: 1px solid #d6d1d5;
+  margin-top: 5px;
+}
+select {
+  display: block;
+  width: 100%;
+  height: 35px;
+}
+input[type="checkbox"] {
+  width: auto;
+  margin-top: 2em;
+  margin-right: 10px;
+}
+h6 {
+  color: white;
+  text-decoration: none;
+}
+span {
+  margin-top: -1.5em;
+  align-self: center;
+}
+button {
+  min-width: 100%;
+  cursor: pointer;
+  margin-right: 0.25em;
+  margin-top: 0.5em;
+  padding: 	0.938em;
+  border: none;
+  border-radius: 4px;
+  background-color: #22223B;
+  color: white;
+}
+button:hover {
+  background-color: #4A4E69;
+  color: #F58220 ;
+}
+.error {
+  color:#db2269;
+  font-size: 0.5em;
+  display: relative;
+}
+.submit {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
