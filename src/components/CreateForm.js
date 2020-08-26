@@ -7,10 +7,8 @@ import useForm from '../hooks/useForm';
 const CreateForm = props => {
 
     const iCreateValues = {
-        name:'',
-        hackName:'',
-        description:'',
-        steps:''
+        title: '',
+        body: ''
     };
 
     const [ userHack, handleChanges ] = useForm(iCreateValues);
@@ -24,31 +22,17 @@ const CreateForm = props => {
         <form onSubmit={createSubmit}>
             <input
             type='text'
-            name='name'
-            value={userHack.name}
+            name='title'
+            value={userHack.title}
             onChange={handleChanges}
-            placeholder='Name'
+            placeholder='Life Hack Title'
             />
             <input
             type='text'
-            name='hackName'
-            value={userHack.hackName}
+            name='body'
+            value={userHack.body}
             onChange={handleChanges}
-            placeholder='Hack Name'
-            />
-            <input
-            type='text'
-            name='description'
-            value={userHack.description}
-            onChange={handleChanges}
-            placeholder='Description'
-            />
-            <input
-            type='text'
-            name='steps'
-            value={userHack.steps}
-            onChange={handleChanges}
-            placeholder='Steps'
+            placeholder='Enter Steps Here'
             />
             <button type='submit'>Post</button>
         </form>

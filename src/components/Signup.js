@@ -1,51 +1,71 @@
 import React, { useState, useEffect } from 'react';
-import SignUpSchema from "./SignUpSchema";
+import { Link, useHistory} from 'react-router-dom';
 import * as Yup from "yup";
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+import SignUpSchema from "./SignUpSchema";
 
 export default function SignUp() {
 
   const [validData, setValidData] = useState({
-    userName: '',
-    email: '',
+    username: '',
+    // email: '',
     password: ''
   })
-    const [errors, setErrors] = useState( {
-    userName: '',
-        email: '',
-        password: '',
-        acceptedTerms: ''
+  const [errors, setErrors] = useState( {
+    username: '',
+    // email: '',
+    password: '',
+    // acceptedTerms: ''
     })
-    const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false)
 
-    const formState = e => {
-      const name = e.target.name;
-      const value = e.target.value;
-      Yup
-      .reach(SignUpSchema, name)
-      .validate(value)
-      .then(valid => {
-          setErrors({
-              ...errors,
-              [name]: ''
-          })
-      })
-      .catch(err => {
-          setErrors({
-              [name]: err.errors[0]
-          })
-      })
-      setValidData({
-          ...validData, [name]: value
-      })
-    }
-    useEffect(() => {
-        SignUpSchema.isValid(validData).then(valid => {
-            setDisabled(!valid)
+  const history = useHistory();
+
+  const formState = e => {
+    const name = e.target.name;
+    const value = e.target.value;
+    Yup
+    .reach(SignUpSchema, name)
+    .validate(value)
+    .then(valid => {
+        setErrors({
+            ...errors,
+            [name]: ''
         })
-    },[validData])
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    })
+    .catch(err => {
+        setErrors({
+            [name]: err.errors[0]
+        })
+    })
+    setValidData({
+        ...validData, [name]: value
+    })
+  }
+  useEffect(() => {
+      SignUpSchema.isValid(validData).then(valid => {
+          setDisabled(!valid)
+      })
+  },[validData])
+
+  const handleSubmit = (event) => {
+      event.preventDefault();
+
+        axios
+            .post('http://spencer-how-to.herokuapp.com/createnewuser', validData)
+            .then((res) => {
+                console.log('Signup Request', res);
+                localStorage.setItem('token', res.data.access_token);
+                console.log(res.data.access_token)
+                history.push('/');
+            })
+            .catch((err) => console.log('Error for Request', err));
+                setValidData({
+                    userName:'',
+                    // email:'',
+                    password:''
+                })
     }
 
   return (
@@ -56,31 +76,31 @@ export default function SignUp() {
         UserName:
     </label>
       <input
-        name='userName'
-        type='userName'
+        name='username'
+        type='text'
         onChange={formState}
         required />
-      <label>
+      {/* <label>
         Email:
         </label>
       <input
         name="email"
-        type="email"
+        type="text"
         onChange={formState}
-        required />
+        required /> */}
       <label>
         Password:
         </label>
       <input
         name="password"
-        type="password"
+        type="text"
         onChange={formState}
         required />
       <br />
-      <input
+      {/* <input
         name="acceptedTerms"
         type="checkbox"
-        onChange={formState} />
+        onChange={formState} /> */}
       <span> I accept the terms of service </span>
       <button disabled={disabled}>Sign Up</button>
       <Link to = "/login">
