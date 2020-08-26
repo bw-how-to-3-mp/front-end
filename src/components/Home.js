@@ -2,7 +2,7 @@ import React from 'react';
 
 import SearchBar from './Search';
 import CreateForm from './CreateForm';
-import HackList from './HackList';
+// import HackList from './HackList';
 
 const Home = props => {
 

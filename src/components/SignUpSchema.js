@@ -15,7 +15,6 @@ const SignUpSchema = Yup.object().shape({
         terms: Yup
         .boolean()
         .oneOf([true], "You must accept Terms and Conditions")
-    // required isn't required for checkboxes.
 });
 
 export default SignUpSchema;

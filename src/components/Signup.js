@@ -8,8 +8,7 @@ export default function SignUp() {
   const [validData, setValidData] = useState({
     userName: '',
     email: '',
-    password: '',
-    acceptedTerms: ''
+    password: ''
   })
     const [errors, setErrors] = useState( {
     userName: '',
